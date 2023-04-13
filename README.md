@@ -1,4 +1,4 @@
-# Hometask QWERy Landing Page
+# Hometask Pet Adoption Landing Page
 
 ## Task descrition
 
