@@ -31,6 +31,24 @@ Common techniques for both layouts:
 - [Mobile-first design approach](https://www.freecodecamp.org/news/taking-the-right-approach-to-responsive-web-design/) - 1.5
 - On a screen with any height either desktop or mobile layout should be visible fully without vertical scrolling - 1
 
+## Evaluation criteria - LR Students
+
+Maximum score - 10 consists of:
+
+- "Desktop" layout implementation (Hero Section block in Figma) (desktop view should be applied on 769px and above):
+  - [ ] Header section with logo, navbar (home, about us, etc) and a button - 0.5
+  - [ ] Main section with text content and images - 2.5
+- "Mobile" layout implementation (Mobile Responsive block in Figma) (mobile view should be applied on 768px and less):
+  - [ ] Header section with logo and a burger menu icon (just icon, without any logic) - 0.5
+  - [ ] Main section with text content and images - 2.5
+
+Common techniques for both layouts:
+
+- Connect and use font [Lato](https://fonts.google.com/specimen/Lato) - 0.5
+- Connect and use [normalize css](https://cdnjs.com/libraries/normalize) - 0.5
+- [Mobile-first design approach](https://www.freecodecamp.org/news/taking-the-right-approach-to-responsive-web-design/) - 2
+- On a screen with any height either desktop or mobile layout should be visible fully without vertical scrolling - 1
+
 ## Figma design link
 
 [Figma design link is here](<https://www.figma.com/file/DFKBdnuR3osZ7VM5Jb9Go3/Pet-Adoption-Website-Modified-(Landing-Page)-(Community)>)
