@@ -5,56 +5,61 @@
   font-weight: normal; 
   } 
 html {
-  font-size: 16px;
+  font-size: 12px;
   color: #404040;
-  background: white;
   font-family: 'Lato';
-  overflow-y: scroll;
+ 
 }
-.body{
-  height: 100vh;
+body{
+  margin: 25px 17px 0 17px;
+  height: 94vh;
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 8% 92%;
   grid-template-areas: 
   "header"
   "contentt";
 }
+button{
+  border: none;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    line-height: inherit;
+    color: #FFFFFF;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
 .header{
   grid-area: header;
   position: relative;
-    top: 0;
-    left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .content{
   position: relative;
   grid-area: contentt;
 }
-.block{
-  height: 35%;
-  width: 90%;
-  position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-}
 .logo{
   height: 100%;
 }
- .gamburger{   /* общепринятое название кнопки состоящей из 3 полосок */
 
-  height: 0.8em;
+ button.gamburger{   
+  border-radius: 0px;
+  height: 1.4em;
+  width: 2em;
+  background: url('../assets/icons/menu.svg')  ; 
 }
-.dropdown{
-  position: absolute;
-  right: 0;
-  top: 0%;
-}
+
 .dropdown-content {
   display: none;
   position: absolute;
+  right: 0px;
   background-color: #f1f1f1;
 
 }
@@ -63,7 +68,7 @@ html {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
+  display:block;
 }
 
 .dropdown-content a:hover {
@@ -74,8 +79,37 @@ html {
   display: block;
 }
 
+.navbar{
+  display: none;
+}
+button.header{
+  display: none;
+}
 @media only screen and (min-width: 769px){
-  .dropdown{
-    display: none;
+  html{
+    font-size:18px;
+    line-height: 23px
   }
+  
+.dropdown{
+    display: none;
+ }
+.navbar{
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+text-align:  center;
+overflow: hidden;
+}
+button.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #ADA7FF;
+  border-radius: 999px;
+  border:none;
+  width: 146px;
+  height: 55px;
+  }
+
 }
