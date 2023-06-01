@@ -1,38 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Pet Adoption</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" integrity="sha512-oHDEc8Xed4hiW6CxD7qjbnI+B07vDdX7hEPTvn9pSZO1bcRqHp8mj9pyr+8RVC2GmtEfI2Bi9Ke9Ass0as+zpg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./styles/style.css" />
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Pet Adoption</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    integrity="sha512-oHDEc8Xed4hiW6CxD7qjbnI+B07vDdX7hEPTvn9pSZO1bcRqHp8mj9pyr+8RVC2GmtEfI2Bi9Ke9Ass0as+zpg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./styles/style.css" />
+</head>
+
+<body>
   <header class="header">
-  <img src="./assets/icons/logo.svg" alt="logo" class="logo">
-  <div class="navbar">
-    <a style="color:#9A93FF" href="#">Home</a>
-    <a href="#">About us</a>
-    <a href="#">Service</a>
-    <a href="#">Gallery</a>
-    <a href="#">Contact us</a>
-  </div>
-  <button class="header">Get Started</button>
-  <div class="dropdown">
-    <button class="gamburger"></button>
-  <div class="dropdown-content">
-    <a style="color:#9A93FF" href="#">Home</a>
-    <a href="#">About us</a>
-    <a href="#">Service</a>
-    <a href="#">Gallery</a>
-    <a href="#">Contact us</a>
-    <a href="#">Get started</a>
-  </div>
-</div>
+    <img src="./assets/icons/logo.svg" alt="logo" class="logo">
+    <ul class="header">
+      <a href="#">
+        <li><span class="purple-text">Home</span></li>
+      </a>
+      <a href="#">
+        <li>about us</li>
+      </a>
+      <a href="#">
+        <li>service</li>
+      </a>
+      <a href="#">
+        <li>gallery</li>
+      </a>
+      <a href="#">
+        <li>contact us</li>
+      </a>
+    </ul>
+    <button class="header">Get Started</button>
+    <div class="dropdown">
+      <button class="gamburger"></button>
+      <div class="dropdown-content">
+        <a href="#"><span class="purple-text">Home</span></a>
+        <a href="#">About us</a>
+        <a href="#">Service</a>
+        <a href="#">Gallery</a>
+        <a href="#">Contact us</a>
+        <a href="#">Get started</a>
+      </div>
+    </div>
   </header>
   <content class="content">
-
+<div class="content-text">
+  <h1>Looking for a <span class="purple-text">good</span> time?</h1>
+  <p>Lorem ipsum dolor sit amet consectetur.
+    Enim viverra quis egestas usi ullamcorper ut ante. Eu pretium lemiro ispum dolor amet viivata tarimo
+    ullamcorper ut
+  </p>
+  <div class="content-text__buttons">
+    <button class="content button-adopt">adopt now <img src="./assets/icons/dog-print.svg"> </button>
+    <button class="content button-play purple-text"><img src="./assets/icons/play.svg"> Watch Video </button>
+  </div>
+  <div class="statistics">
+    <div class="block">
+    <p class="statistics__num">299K+</p>
+    <p class="statistics__text">Product</p>
+    </div>
+    <div class="block">
+      <p class="statistics__num">99K+</p>
+      <p class="statistics__text">Seller</p>
+      </div>
+      <div class="block">
+        <p class="statistics__num">2K+</p>
+        <p class="statistics__text">Positive Review</p>
+        </div>      
+  </div>
+</div>
   </content>
 
-  </body>
+</body>
+
 </html>
