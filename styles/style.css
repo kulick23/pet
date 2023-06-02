@@ -60,10 +60,11 @@ h1 {
   position: relative;
   grid-area: contentt;
   display: grid;
-  grid-template-rows: 25px 1fr 3fr;
+  grid-template-rows: 25px 1fr 25px 3fr;
   grid-template-areas:
     "none"
     "text"
+    "none2"
     "picture";
 }
 
@@ -164,7 +165,86 @@ button.content {
   margin: 0
 }
 
-@media only screen and (min-width: 769px) {
+.content-img{
+  grid-area: picture;
+  display: grid; 
+  grid-template-columns: 1fr 5fr 1fr 5fr 1fr; 
+  grid-template-rows: 1fr 5fr 5fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "paw-f . Dog Dog Dog"
+    ". . Dog Dog Dog"
+    "cat cat cat . ."
+    "cat cat cat . paw-o"; 
+}
+.cat-rec { grid-area: cat; }
+.dog-rec { grid-area: Dog; }
+.paw-top-rec { grid-area: paw-f; }
+.paw-bottom-rec { grid-area: paw-o; }
+.content-img-item{
+  width: 100%;
+}
+.top-left{
+  transform: rotate(90deg)
+}
+.top-right{
+  transform: rotate(180deg)
+}
+.bottom-right{
+  transform: rotate(270deg)
+}
+.paw {
+  position: relative
+}
+
+.paw:after {
+  content: url(../assets/icons/dog-print.svg);
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  transform: translate(-60%,-60%)
+}
+
+.paw--bottom:after {
+  top: 60%;
+  left: 60%;
+
+}
+
+.dog {
+  position: relative
+}
+
+.dog:after {
+  content: "";
+  background-image: url(../assets/images/dog-sitting.png);
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: 100%
+}
+
+.cat {
+  position: relative
+}
+
+.cat:after {
+  content: "";
+  background-image: url(../assets/images/cat-lying.png);
+  position: absolute;
+  bottom: -10px;
+  left: 40px;
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: 100%
+}
+@media (min-width: 769px) {
   html {
     font-size: 18px;
     line-height: 23px
