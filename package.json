@@ -1,7 +1,6 @@
 {
-  "name": "hometask-pet",
+  "name": "pet",
   "version": "1.0.0",
-  "description": "Hometask for EHU EPAM Introduction to WebDev Course",
   "main": "index.js",
   "scripts": {
     "build": "vite build --base=./",
@@ -12,18 +11,5 @@
     "prettier": "prettier --check . --ignore-unknown --ignore-path ../../config/.prettierignore",
     "prettier:fix": "prettier --write . --ignore-unknown --ignore-path ../../config/.prettierignore"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/epam-ehu/intro-to-web-dev-tasks.git"
-  },
-  "author": "Aliaksandr Krasnou <aliaksandr_krasnou@epam.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "eslint-config-esdu": "*",
-    "ts-config-esdu": "*"
-  },
-  "bugs": {
-    "url": "https://gitlab.com/epam-ehu/intro-to-web-dev-tasks/issues"
-  },
-  "homepage": "https://gitlab.com/epam-ehu/intro-to-web-dev-tasks#readme"
+  "license": "ISC"
 }
