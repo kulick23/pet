@@ -10,6 +10,12 @@
     integrity="sha512-oHDEc8Xed4hiW6CxD7qjbnI+B07vDdX7hEPTvn9pSZO1bcRqHp8mj9pyr+8RVC2GmtEfI2Bi9Ke9Ass0as+zpg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/about.css" />
+  <link rel="stylesheet" href="./styles/gallery.css" />
+  <link rel="stylesheet" href="./styles/contact.css" />
+
+
+
 </head>
 
 <body>
@@ -86,7 +92,118 @@
       </div>
     </div>
   </content>
+  <section id="about">
+    <img src="./assets/images/dog-sitting.png" alt="Photo" class="about__photo">
+    <div class="about__info">
+        <h3 class="text-with-circle">Про меня</h3>
+        <h2>Меня зовут Александра</h2>
+        <div class="line"></div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+            officia deserunt mollit anim id est laborum</p>
+        <div class="about__blocks">
+            <div class="about__block">
+                <div class="about__icon">
+                    <div class="text-with-circle"></div>
+                    <img src="./assets//icons/dog-print.svg" alt="dog">
+                </div>
+                <div class="about__icon--text">
+                    <h4>Web-разработка</h4>
+                    <small>Lorem ipsum dolor sit amet,<br>
+                        consectetur adipiscing elit, sed <br> do eiusmod tempor
+                        incididunt ut <br> labore et dolore magna aliqua.</small>
+                </div>
+            </div>
+            <div class="about__block">
+                <div class="about__icon">
+                    <div class="text-with-circle"></div>
+                    <img src="./assets//icons/dog-print.svg" alt="dog">
+                </div>
+                <div class="about__icon--text">
+                    <h4>Разработка приложений</h4>
+                    <small>Lorem ipsum dolor sit amet,<br>
+                        consectetur adipiscing elit, sed <br> do eiusmod tempor
+                        incididunt ut <br> labore et dolore magna aliqua.</small>
+                </div>
+            </div>
+          
+              
+            </div>
+        </div>
+    </div>
+</section>
+<section id="portfolio">
+  <h3 class="text-centre-circle">Портфолио</h3>
 
+  <div class="portfolio__block">
+      <div class="portfolio__item1">
+          <img src="./assets/images/cat1.jpg" alt="Portfolio 1">
+      </div>
+      <div class="portfolio__item2">
+        <img src="./assets/images/cat2.jpg" alt="Portfolio 1">
+      </div>
+      <div class="portfolio__item3">
+        <img src="./assets/images/dog2.jpg" alt="Portfolio 1">
+      </div>
+      <div class="portfolio__item4">
+        <img src="./assets/images/dog1.jpg" alt="Portfolio 1">
+      </div>
+      <div class="portfolio__item5">
+        <img src="./assets/images/monkey1.jpg" alt="Portfolio 1">
+      </div>
+      <div class="portfolio__item6">
+        <img src="./assets/images/monkey2.jpg" alt="Portfolio 1">
+      </div>
+  </div>
+</section>
+
+<section id="contact">
+  <img src="./assets/images/cat-lying.png" alt="photo" class="contact__image">
+  <div class="contact__form">
+      <h3 class="text-with-circle">Контакты</h3>
+      <h2>Свяжитесь со мной</h2>
+
+      <p>Любым удобным для вас способом:</p>
+      <div class="contact__links">
+          <a href="https://www.facebook.com/"><img class="contact__icon" src="./assets/icons/Facebook.svg"
+                  alt="Facebook"></a>
+          <a href="https://telegram.org/"><img class="contact__icon" src="./assets/icons/Telegram.svg"
+                  alt="Telegram"></a>
+          <a href="https://www.instagram.com/"><img class="contact__icon"
+                  src="./assets/icons/Instagram.svg" alt="Instagram"></a>
+      </div>
+      <p>Или оставьте ваши данные и я сама вам напишу:</p>
+      <form class="form__container">
+          <div class="form__line">
+              <div class="form__item">
+                  <label for="name">Ваше имя</label>
+                  <input type="text" id="name" placeholder="Иван">
+              </div>
+
+              <div class="form__item">
+                  <label for="email">Ваша почта</label>
+                  <input type="email" id="email" placeholder="ivan@example.com">
+              </div>
+          </div>
+          <div class="form__item">
+
+              <label for="message">Ваше сообщение</label>
+              <textarea id="message" placeholder="Напишите ваше сообщение..."></textarea>
+          </div>
+          <div class="form__checkbox">
+              <input type="checkbox" id="privacy" required>
+              <small>Я согласен(а) с <small class="blue-text">политикой конфиденциальности</small></small>
+          </div>
+
+          <button class="contact__button" type="submit">Отправить сообщение</button>
+      </form>
+  </div>
+</section>
 </body>
+
 
 </html>

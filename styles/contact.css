@@ -1,0 +1,115 @@
+#contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.contact__image {
+    flex: 1;
+    align-self: center;
+    justify-self: center;
+}
+
+.contact__icon {
+    height: 30px;
+}
+
+.contact__form {
+    flex: 1;
+    padding: 7px 40px;
+}
+
+.contact__links {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__container input,
+.form__container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form__container textarea {
+    resize: none;
+    height: 100px;
+}
+
+.form__line {
+    display: flex;
+    gap: 50px;
+}
+
+.form__item label {
+    position: relative;
+    top: 10px;
+    left: 20px;
+    background-color: white;
+}
+
+.contact__button {
+    width: 50%;
+}
+.form__checkbox {
+display: none;
+}
+input {
+    cursor: pointer;
+
+}
+
+@media (max-width: 768px) {
+    #contact {
+        display: flex;
+        flex-direction: column;        
+    
+    }
+    .contact__image{
+        display: none;
+    }
+    .contact__form {
+        flex: 1;
+        padding: 20px 0;
+    }
+    .contact__form h3 {
+    margin-left: 20px;
+    }
+    .form__line {
+        display: block;
+    }
+    .form__container input,
+    .form__container textarea {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    .contact__button {
+        width: 100%;
+    }
+    .form__checkbox {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .form__checkbox input[type="checkbox"] {
+        width: auto;
+        margin: 0;
+    }
+}
