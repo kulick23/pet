@@ -22,58 +22,51 @@
   <header class="header">
     <img src="./assets/icons/logo.svg" alt="logo">
     <ul class="header__ul">
-      <a href="#">
-        <li><span class="text--purple">Home</span></li>
+      <a href="#home">
+        <li class="text--purple">Home</li>
       </a>
-      <a href="#">
-        <li>about us</li>
+      <a href="#about">
+        <li>About Us</li>
       </a>
-      <a href="#">
-        <li>service</li>
+      <a href="#gallery">
+        <li>Gallery</li>
       </a>
-      <a href="#">
-        <li>gallery</li>
-      </a>
-      <a href="#">
-        <li>contact us</li>
+      <a href="#contact">
+        <li>Contact Us</li>
       </a>
     </ul>
     <button class="header__button">Get Started</button>
     <div class="header__dropdown">
       <button class="button__gamburger"></button>
       <div class="button__dropdown ">
-        <a href="#"><span class="text--purple">Home</span></a>
-        <a href="#">About us</a>
-        <a href="#">Service</a>
-        <a href="#">Gallery</a>
-        <a href="#">Contact us</a>
-        <a href="#">Get started</a>
+        <a href="#home"><span class="text--purple">Home</span></a>
+        <a href="#about">About Us</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#get-started">Get Started</a>
       </div>
     </div>
   </header>
-  <content class="content">
+  <content class="content" id="home">
     <div class="content__text">
       <h1>Looking for a <span class="text--purple">good</span> time?</h1>
-      <p class="content__text--max-width">Lorem ipsum dolor sit amet consectetur.
-        Enim viverra quis egestas usi ullamcorper ut ante. Eu pretium lemiro ispum dolor amet viivata tarimo
-        ullamcorper ut
-      </p>
+      <p class="content__text--max-width">We are dedicated to helping animals in need. Join us in making a difference in the lives of countless animals.</p>
       <div class="content__buttons">
-        <button class="button__adopt content__buttons--display">adopt now <img src="./assets/icons/dog-print.svg"> </button>
+        <button class="button__adopt content__buttons--display">Adopt Now <img src="./assets/icons/dog-print.svg"> </button>
         <button class="button__play content__buttons--display text--purple"><img src="./assets/icons/play.svg"> Watch Video </button>
       </div>
       <div class="content__statistics">
         <div class="statistics__text--indent">
           <p class="statistics__num">299K+</p>
-          <p class="statistics__text">Product</p>
+          <p class="statistics__text">Animals Helped</p>
         </div>
         <div class="statistics__text--indent">
           <p class="statistics__num">99K+</p>
-          <p class="statistics__text">Seller</p>
+          <p class="statistics__text">Volunteers</p>
         </div>
         <div class="statistics__text--indent">
           <p class="statistics__num">2K+</p>
-          <p class="statistics__text">Positive Review</p>
+          <p class="statistics__text">Positive Reviews</p>
         </div>
       </div>
     </div>
@@ -95,115 +88,111 @@
   <section id="about">
     <img src="./assets/images/dog-sitting.png" alt="Photo" class="about__photo">
     <div class="about__info">
-        <h3 class="text-with-circle">Про меня</h3>
-        <h2>Меня зовут Александра</h2>
-        <div class="line"></div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum</p>
+        <h3 class="text-with-circle">About Us</h3>
+        <h2>We pet assistance charity </h2>
+        <p>We are dedicated to helping animals in need. Join us in making a difference in the lives of countless animals.</p>
         <div class="about__blocks">
             <div class="about__block">
                 <div class="about__icon">
                     <div class="text-with-circle"></div>
-                    <img src="./assets//icons/dog-print.svg" alt="dog">
+                    <img src="./assets/icons/dog-print.svg" alt="dog">
                 </div>
                 <div class="about__icon--text">
-                    <h4>Web-разработка</h4>
-                    <small>Lorem ipsum dolor sit amet,<br>
-                        consectetur adipiscing elit, sed <br> do eiusmod tempor
-                        incididunt ut <br> labore et dolore magna aliqua.</small>
+                    <h4>Charity Events</h4>
+                    <small>Organizing events to raise funds and awareness for animal welfare.</small>
                 </div>
             </div>
             <div class="about__block">
                 <div class="about__icon">
                     <div class="text-with-circle"></div>
-                    <img src="./assets//icons/dog-print.svg" alt="dog">
+                    <img src="./assets/icons/dog-print.svg" alt="dog">
                 </div>
                 <div class="about__icon--text">
-                    <h4>Разработка приложений</h4>
-                    <small>Lorem ipsum dolor sit amet,<br>
-                        consectetur adipiscing elit, sed <br> do eiusmod tempor
-                        incididunt ut <br> labore et dolore magna aliqua.</small>
+                    <h4>Fundraising Campaigns</h4>
+                    <small>Running campaigns to gather donations for supporting animal shelters and rescue operations.</small>
                 </div>
-            </div>
-          
-              
             </div>
         </div>
     </div>
-</section>
-<section id="portfolio">
-  <h3 class="text-centre-circle">Портфолио</h3>
-
-  <div class="portfolio__block">
-      <div class="portfolio__item1">
-          <img src="./assets/images/cat1.jpg" alt="Portfolio 1">
-      </div>
-      <div class="portfolio__item2">
-        <img src="./assets/images/cat2.jpg" alt="Portfolio 1">
-      </div>
-      <div class="portfolio__item3">
-        <img src="./assets/images/dog2.jpg" alt="Portfolio 1">
-      </div>
-      <div class="portfolio__item4">
-        <img src="./assets/images/dog1.jpg" alt="Portfolio 1">
-      </div>
-      <div class="portfolio__item5">
-        <img src="./assets/images/monkey1.jpg" alt="Portfolio 1">
-      </div>
-      <div class="portfolio__item6">
-        <img src="./assets/images/monkey2.jpg" alt="Portfolio 1">
-      </div>
-  </div>
-</section>
-
-<section id="contact">
-  <img src="./assets/images/cat-lying.png" alt="photo" class="contact__image">
-  <div class="contact__form">
-      <h3 class="text-with-circle">Контакты</h3>
-      <h2>Свяжитесь со мной</h2>
-
-      <p>Любым удобным для вас способом:</p>
-      <div class="contact__links">
-          <a href="https://www.facebook.com/"><img class="contact__icon" src="./assets/icons/Facebook.svg"
-                  alt="Facebook"></a>
-          <a href="https://telegram.org/"><img class="contact__icon" src="./assets/icons/Telegram.svg"
-                  alt="Telegram"></a>
-          <a href="https://www.instagram.com/"><img class="contact__icon"
-                  src="./assets/icons/Instagram.svg" alt="Instagram"></a>
-      </div>
-      <p>Или оставьте ваши данные и я сама вам напишу:</p>
-      <form class="form__container">
-          <div class="form__line">
-              <div class="form__item">
-                  <label for="name">Ваше имя</label>
-                  <input type="text" id="name" placeholder="Иван">
-              </div>
-
-              <div class="form__item">
-                  <label for="email">Ваша почта</label>
-                  <input type="email" id="email" placeholder="ivan@example.com">
-              </div>
-          </div>
-          <div class="form__item">
-
-              <label for="message">Ваше сообщение</label>
-              <textarea id="message" placeholder="Напишите ваше сообщение..."></textarea>
-          </div>
-          <div class="form__checkbox">
-              <input type="checkbox" id="privacy" required>
-              <small>Я согласен(а) с <small class="blue-text">политикой конфиденциальности</small></small>
-          </div>
-
-          <button class="contact__button" type="submit">Отправить сообщение</button>
-      </form>
-  </div>
-</section>
+  </section>
+  <section id="gallery">
+    <h3 class="text-centre-circle">Gallery</h3>
+    <div class="portfolio__block">
+        <div class="portfolio__item1">
+            <img src="./assets/images/cat1.jpg" alt="Portfolio 1">
+        </div>
+        <div class="portfolio__item2">
+          <img src="./assets/images/cat2.jpg" alt="Portfolio 2">
+        </div>
+        <div class="portfolio__item3">
+          <img src="./assets/images/dog2.jpg" alt="Portfolio 3">
+        </div>
+        <div class="portfolio__item4">
+          <img src="./assets/images/dog1.jpg" alt="Portfolio 4">
+        </div>
+        <div class="portfolio__item5">
+          <img src="./assets/images/monkey1.jpg" alt="Portfolio 5">
+        </div>
+        <div class="portfolio__item6">
+          <img src="./assets/images/monkey2.jpg" alt="Portfolio 6">
+        </div>
+    </div>
+  </section>
+  <section id="contact">
+    <img src="./assets/images/cat-lying.png" alt="photo" class="contact__image">
+    <div class="contact__form">
+        <h3 class="text-with-circle">Contact</h3>
+        <h2>Get in Touch</h2>
+        <p>Contact us through any of the following methods:</p>
+        <div class="contact__links">
+            <a href="https://www.facebook.com/"><img class="contact__icon" src="./assets/icons/Facebook.svg" alt="Facebook"></a>
+            <a href="https://telegram.org/"><img class="contact__icon" src="./assets/icons/Telegram.svg" alt="Telegram"></a>
+            <a href="https://www.instagram.com/"><img class="contact__icon" src="./assets/icons/Instagram.svg" alt="Instagram"></a>
+        </div>
+        <p>Or leave your details and we will get back to you:</p>
+        <form class="form__container">
+            <div class="form__line">
+                <div class="form__item">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="John">
+                </div>
+                <div class="form__item">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" placeholder="john@example.com">
+                </div>
+            </div>
+            <div class="form__item">
+                <label for="message">Your Message</label>
+                <textarea id="message" placeholder="Write your message..."></textarea>
+            </div>
+            <div class="form__checkbox">
+                <input type="checkbox" id="privacy" required>
+                <small>I agree with the <small class="blue-text">privacy policy</small></small>
+            </div>
+            <button class="contact__button" type="submit">Send Message</button>
+        </form>
+    </div>
+  </section>
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('.header__ul a');
+    const sections = document.querySelectorAll('section');
+
+    function changeActiveLink() {
+      let index = sections.length;
+
+      while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+
+      links.forEach((link) => link.querySelector('li').classList.remove('text--purple'));
+      links[index].querySelector('li').classList.add('text--purple');
+    }
+
+    changeActiveLink();
+    window.addEventListener('scroll', changeActiveLink);
+  });
+</script>
+
 
 
 </html>
