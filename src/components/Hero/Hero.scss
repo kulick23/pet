@@ -1,0 +1,197 @@
+.content {
+  position: relative;
+  grid-area: contentt;
+  display: grid;
+  grid-template-rows: 25px 1fr 25px 3fr;
+  grid-template-areas:
+    "."
+    "text"
+    "."
+    "picture";
+
+  &__text {
+    grid-area: text;
+
+    &--max-width {
+      max-width: 90%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 35px 0;
+
+    &--display {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  &__statistics {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__img {
+    grid-area: picture;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr 5fr 1fr;
+    grid-template-rows: 1fr 5fr 5fr 1fr;
+    grid-template-areas:
+      "paw-f . Dog Dog Dog"
+      ". . Dog Dog Dog"
+      "cat cat cat . ."
+      "cat cat cat . paw-o";
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.button__adopt {
+  padding: 10px 15px;
+  background-color: #ada7ff;
+  color: #fff;
+}
+
+.button__play {
+  img {
+    height: 40px;
+  }
+}
+
+.statistics__num {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 15px;
+}
+
+.statistics__text {
+  margin: 0;
+}
+
+.statistics__text--indent {
+  line-height: 38px;
+}
+
+.img__paw,
+.img__dog,
+.img__cat {
+  position: relative;
+}
+
+.img__paw {
+  &:after {
+    content: url('../../assets/icons/dog-print.svg');
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transform: translate(-60%, -60%);
+  }
+  &.img__paw--bottom:after {
+    top: 60%;
+    left: 60%;
+  }
+}
+
+.img__dog {
+  &:after {
+    content: "";
+    background-image: url('../../assets/images/dog-sitting.png');
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+  }
+}
+
+.img__cat {
+  &:after {
+    content: "";
+    background-image: url('../../assets/images/cat-lying.png');
+    position: absolute;
+    bottom: -10px;
+    left: 40px;
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+  }
+}
+
+.img__cat--position {
+  grid-area: cat;
+  justify-self: start;
+  align-self: end;
+}
+
+.img__dog--position {
+  grid-area: Dog;
+  justify-self: end;
+  align-self: start;
+}
+
+.img__paw-top--position {
+  grid-area: paw-f;
+  justify-self: start;
+  align-self: start;
+}
+
+.img__paw-bottom--position {
+  grid-area: paw-o;
+  justify-self: end;
+  align-self: end;
+}
+
+.img__paw-top--tranform {
+  transform: rotate(90deg);
+}
+
+.img__dog--tranform {
+  transform: rotate(180deg);
+}
+
+.img__paw-bottom--tranform {
+  transform: rotate(270deg);
+}
+
+@media (min-width: 769px) {
+  .content {
+    display: grid;
+    grid-template-columns: 3fr 1fr 2fr;
+    grid-template-rows: 25px 1fr;
+
+    &__img {
+      grid-area: 2 / 2 / 3 / 4;
+      justify-self: end;
+      max-height: 500px;
+      max-width: 500px;
+      z-index: 1;
+    }
+
+    &__text {
+      grid-area: 2 / 1 / 3 / 3;
+      position: absolute;
+      top: 15%;
+      z-index: 2;
+
+      &--max-width {
+        max-width: 90%;
+      }
+    }
+  }
+
+  .statistics__num {
+    line-height: 40px;
+  }
+}

@@ -3,13 +3,25 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev": "vite",
     "build": "vite build --base=./",
-    "serve": "vite --host=localhost --port=8080 ./ ",
     "preview": "vite preview",
     "lint": "eslint -c .eslintrc src/*.js",
     "lint:fix": "eslint -c .eslintrc src/*.js --fix",
     "prettier": "prettier --check . --ignore-unknown --ignore-path ../../config/.prettierignore",
     "prettier:fix": "prettier --write . --ignore-unknown --ignore-path ../../config/.prettierignore"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.3",
+    "sass-embedded": "^1.92.1",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  }
 }
