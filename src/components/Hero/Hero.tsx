@@ -1,6 +1,64 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Hero.scss';
+
+const stats = [
+  { value: 299_000, label: 'Animals Helped', suffix: 'K+' },
+  { value: 99_000, label: 'Volunteers', suffix: 'K+' },
+  { value: 2_000, label: 'Positive Reviews', suffix: 'K+' },
+];
+
+const getDisplayValue = (val: number, suffix: string) => {
+  if (suffix === 'K+') return `${Math.floor(val / 1000)}K+`;
+  return `${val}${suffix}`;
+};
+
 export const Hero: React.FC = () => {
+  const [counts, setCounts] = useState([0, 0, 0]);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let intervals: NodeJS.Timeout[] = [];
+    let started = false;
+
+    const animate = () => {
+      if (started) return;
+      started = true;
+      stats.forEach((stat, idx) => {
+        let current = 0;
+        const step = Math.ceil(stat.value / 60);
+        intervals[idx] = setInterval(() => {
+          current += step;
+          if (current >= stat.value) {
+            current = stat.value;
+            clearInterval(intervals[idx]);
+          }
+          setCounts(prev => {
+            const arr = [...prev];
+            arr[idx] = current;
+            return arr;
+          });
+        }, 20);
+      });
+    };
+
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          animate();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (statsRef.current) observer.observe(statsRef.current);
+
+    return () => {
+      observer.disconnect();
+      intervals.forEach(clearInterval);
+    };
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <section className="content" id="home">
       <div className="content__text">
@@ -20,19 +78,15 @@ export const Hero: React.FC = () => {
           </button>
         </div>
 
-        <div className="content__statistics">
-          <div className="statistics__text--indent">
-            <p className="statistics__num">299K+</p>
-            <p className="statistics__text">Animals Helped</p>
-          </div>
-          <div className="statistics__text--indent">
-            <p className="statistics__num">99K+</p>
-            <p className="statistics__text">Volunteers</p>
-          </div>
-          <div className="statistics__text--indent">
-            <p className="statistics__num">2K+</p>
-            <p className="statistics__text">Positive Reviews</p>
-          </div>
+        <div className="content__statistics" ref={statsRef}>
+          {stats.map((stat, idx) => (
+            <div className="statistics__text--indent" key={stat.label}>
+              <p className="statistics__num">
+                {getDisplayValue(counts[idx], stat.suffix)}
+              </p>
+              <p className="statistics__text">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
 
