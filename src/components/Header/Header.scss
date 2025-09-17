@@ -1,9 +1,17 @@
 .header {
   grid-area: header;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgba(255,255,255,0.85);
+  transition: box-shadow 0.3s, padding 0.3s, backdrop-filter 0.3s;
+  box-shadow: none;
+  padding: 20px 0;
 
   &:after {
     content: "";
@@ -53,6 +61,13 @@
       display: block;
     }
   }
+
+  &.is-sticky {
+    box-shadow: 0 5px 16px rgba(0,0,0,0.1);
+    padding: 8px 0;
+    backdrop-filter: blur(10px);
+    animation: slideDown 0.35s ease-out;
+  }
 }
 
 .text--purple {
@@ -89,4 +104,9 @@
       display: none;
     }
   }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
 }

@@ -13,6 +13,7 @@ html {
 
 body {
   margin: 25px 17px 0 17px;
+  padding-top: 80px; // или подберите под высоту header
   height: 94vh;
   display: grid;
   grid-template-rows: 8% 92%;

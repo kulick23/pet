@@ -10,9 +10,14 @@ const navLinks = [
 
 export const Header: React.FC = () => {
   const [active, setActive] = useState('#home');
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      // sticky logic
+      setIsSticky(window.scrollY > 150);
+
+      // active link logic
       const offsets = navLinks.map(link => {
         const section = document.querySelector(link.href) as HTMLElement | null;
         return section ? section.offsetTop : 0;
@@ -30,7 +35,7 @@ export const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className="header" role="banner">
+    <header className={`header${isSticky ? ' is-sticky' : ''}`} role="banner">
       <img src="./assets/icons/logo.svg" alt="logo" />
       <nav>
         <ul className="header__ul">
