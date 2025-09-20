@@ -16,7 +16,7 @@ export const Contact: React.FC = () => {
 
   return (
     <section className="contact" id="contact">
-      <img src="./assets/images/cat-lying.png" alt="photo" className="contact__image" />
+      <img src="./assets/images/monkey.png" alt="photo" className="contact__image" />
       <div className="contact__form">
         <h3 className="text-with-circle">Contact</h3>
         <h2>Get in Touch</h2>

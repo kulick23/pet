@@ -3,7 +3,7 @@ import './About.scss';
 export const About: React.FC = () => {
   return (
     <section id="about" className="about">
-      <img src="./assets/images/dog-sitting.png" alt="Photo" className="about__photo" />
+      <img src="./assets/images/hamster.png" alt="Photo" className="about__photo" />
       <div className="about__info">
         <h3 className="text-with-circle">About Us</h3>
         <h2>We pet assistance charity</h2>
