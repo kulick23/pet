@@ -1,0 +1,132 @@
+.gift-slider {
+  margin-top: 80px;
+  text-align: center;
+
+  &__lead {
+    max-width: 700px;
+    margin: 8px auto 20px;
+    color: #666;
+  }
+
+  &__viewport {
+    position: relative;
+    overflow: hidden;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.45s ease;
+    will-change: transform;
+  }
+
+  &__slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+
+    img {
+      max-height: 300px;
+      width: auto;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.06);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__arrow--left { left: 12px; }
+  &__arrow--right { right: 12px; }
+
+  &__dots {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    background: #ddd;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  &__dot.is-active {
+    background: #9A93FF;
+    box-shadow: 0 2px 8px rgba(154,147,255,0.2);
+  }
+
+  .swiper {
+    width: 100%;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .gift-slider__slide {
+      padding: 12px;
+
+      img {
+        width: 100%;
+        max-width: 360px;
+        max-height: 320px;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #333;
+    background: rgba(0,0,0,0.06);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
+
+  .swiper-pagination-bullet {
+    background: #ddd;
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #9A93FF;
+  }
+}
+
+@media (min-width: 769px) {
+  .gift-slider {
+    &__slide {
+      img {
+        max-height: 360px;
+      }
+    }
+  }
+}

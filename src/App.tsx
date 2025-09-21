@@ -1,5 +1,5 @@
 import React from 'react';
-import {Header, Hero, About, Gallery, Contact} from './components';
+import {Header, Hero, About, Gallery, Contact, GiftSlider} from './components';
 import '../styles/style.scss';
 
 
@@ -11,6 +11,7 @@ const App: React.FC = () => {
         <Hero />
         <About />
         <Gallery />
+        <GiftSlider />
         <Contact />
       </main>
     </div>
