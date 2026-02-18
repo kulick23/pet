@@ -88,9 +88,9 @@ export const Hero: React.FC = () => {
           <a className="button__adopt content__buttons--display" href="#contact">
             Adopt Now <img src={dogPrintIcon} alt="" />
           </a>
-          <button className="button__play content__buttons--display" type="button">
+          <a className="button__play content__buttons--display" href="#gallery">
             <img src={playIcon} alt="" /> Watch Story
-          </button>
+          </a>
         </div>
 
         <div className="content__tags">
