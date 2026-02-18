@@ -27,7 +27,7 @@ export const GiftSlider: React.FC = () => {
         <Swiper
           modules={[Navigation, Pagination, Autoplay, Keyboard]}
           spaceBetween={16}
-          slidesPerView={1.15}
+          slidesPerView={1}
           centeredSlides={false}
           loop
           navigation
@@ -35,9 +35,9 @@ export const GiftSlider: React.FC = () => {
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           breakpoints={{
-            640: { slidesPerView: 1.5 },
-            900: { slidesPerView: 2.4 },
-            1200: { slidesPerView: 3.1 }
+            640: { slidesPerView: 1 },
+            900: { slidesPerView: 2 },
+            1200: { slidesPerView: 3 }
           }}
         >
           {gifts.map((src, i) => (
