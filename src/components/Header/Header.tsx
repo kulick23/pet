@@ -1,73 +1,89 @@
 import React, { useEffect, useState } from 'react';
+import logoIcon from '../../assets/icons/logo.svg';
+import menuIcon from '../../assets/icons/menu.svg';
 import './Header.scss';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About Us' },
+  { href: '#about', label: 'About' },
   { href: '#gallery', label: 'Gallery' },
-  { href: '#contact', label: 'Contact Us' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 export const Header: React.FC = () => {
   const [active, setActive] = useState('#home');
   const [isSticky, setIsSticky] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // sticky logic
-      setIsSticky(window.scrollY > 150);
+    const onScroll = () => {
+      setIsSticky(window.scrollY > 24);
+      const scrollY = window.scrollY + 120;
 
-      // active link logic
-      const offsets = navLinks.map(link => {
+      let current = '#home';
+      navLinks.forEach(link => {
         const section = document.querySelector(link.href) as HTMLElement | null;
-        return section ? section.offsetTop : 0;
+        if (section && scrollY >= section.offsetTop) {
+          current = link.href;
+        }
       });
-      const scrollY = window.scrollY + 60;
-      let idx = 0;
-      for (let i = 0; i < offsets.length; i++) {
-        if (scrollY >= offsets[i]) idx = i;
-      }
-      setActive(navLinks[idx].href);
+
+      setActive(current);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const onResize = () => {
+      if (window.innerWidth > 900) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
   return (
-    <header className={`header${isSticky ? ' is-sticky' : ''}`} role="banner">
-      <img src="./assets/icons/logo.svg" alt="logo" />
-      <nav>
-        <ul className="header__ul">
-          {navLinks.map(link => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className={active === link.href ? 'text--purple' : undefined}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <button className="header__button">Get Started</button>
+    <header className={`header${isSticky ? ' is-sticky' : ''}`}>
+      <a href="#home" className="header__brand" aria-label="Pet Care home">
+        <img src={logoIcon} alt="Pet Care" />
+        <span>PetCare</span>
+      </a>
 
-      <div className="header__dropdown" aria-hidden="true">
-        <button className="button__gamburger" aria-label="menu" />
-        <div className="button__dropdown">
-          {navLinks.map(link => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={active === link.href ? 'text--purple' : undefined}
-            >
-              {link.label}
-            </a>
-          ))}
-          <a href="#get-started">Get Started</a>
-        </div>
-      </div>
+      <nav className="header__desktop" aria-label="Main navigation">
+        {navLinks.map(link => (
+          <a key={link.href} href={link.href} className={active === link.href ? 'is-active' : ''}>
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <a className="header__cta" href="#contact">Become a Helper</a>
+
+      <button
+        className="header__menu"
+        type="button"
+        aria-label="Toggle menu"
+        aria-expanded={isMenuOpen}
+        onClick={() => setIsMenuOpen(prev => !prev)}
+      >
+        <img src={menuIcon} alt="" aria-hidden="true" />
+      </button>
+
+      <nav className={`header__mobile${isMenuOpen ? ' is-open' : ''}`} aria-label="Mobile navigation">
+        {navLinks.map(link => (
+          <a key={link.href} href={link.href} className={active === link.href ? 'is-active' : ''} onClick={() => setIsMenuOpen(false)}>
+            {link.label}
+          </a>
+        ))}
+        <a href="#contact" className="header__mobile-cta" onClick={() => setIsMenuOpen(false)}>
+          Become a Helper
+        </a>
+      </nav>
     </header>
   );
 };

@@ -1,112 +1,159 @@
 .header {
-  grid-area: header;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+  z-index: 120;
+  top: clamp(12px, 2.3vw, 22px);
+  left: clamp(14px, 2.2vw, 28px);
+  right: clamp(14px, 2.2vw, 28px);
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: rgba(255,255,255,0.85);
-  transition: box-shadow 0.3s, padding 0.3s, backdrop-filter 0.3s;
-  box-shadow: none;
-  padding: 20px 0;
+  gap: 8px;
+  transition: box-shadow 220ms ease, transform 220ms ease;
 
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translate(-50%);
-    border-bottom: 1px solid rgba(212, 212, 212, .58);
-    width: 100vw;
+  &.is-sticky {
+    box-shadow: 0 14px 36px rgba(17, 25, 45, 0.14);
   }
 
-  &__ul {
-    display: none;
-  }
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
 
-  &__button {
-    display: none;
-  }
-
-  &__dropdown {
-    .button__gamburger {
-      border-radius: 0px;
-      height: 1.4em;
-      width: 2em;
-      background: url('../../assets/icons/menu.svg');
+    img {
+      width: 36px;
+      height: 36px;
     }
 
-    .button__dropdown {
-      display: none;
-      position: absolute;
-      right: 0px;
-      background-color: #f1f1f1;
+    span {
+      font-size: 0.92rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #2d3552;
+    }
+  }
 
-      a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
+  &__desktop {
+    margin-left: auto;
+    margin-right: 8px;
+    display: none;
+    align-items: center;
+    gap: 2px;
 
-        &:hover {
-          background-color: #ddd;
-        }
+    a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: #3a415f;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: color 180ms ease, background-color 180ms ease;
+
+      &:hover,
+      &.is-active {
+        color: var(--primary);
+        background: var(--primary-soft);
+      }
+    }
+  }
+
+  &__cta {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #6f66e8, #8d80ff);
+    box-shadow: 0 10px 20px rgba(111, 102, 232, 0.33);
+  }
+
+  &__menu {
+    margin-left: auto;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: #fff;
+    display: grid;
+    place-items: center;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__mobile {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    left: 0;
+    padding: 10px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    box-shadow: 0 16px 34px rgba(18, 27, 54, 0.14);
+    display: none;
+
+    a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: #38415f;
+
+      &:hover,
+      &.is-active {
+        background: #f2f4ff;
+        color: var(--primary);
       }
     }
 
-    &:hover .button__dropdown {
+    &.is-open {
       display: block;
+      animation: reveal 180ms ease;
     }
   }
 
-  &.is-sticky {
-    box-shadow: 0 5px 16px rgba(0,0,0,0.1);
-    padding: 8px 0;
-    backdrop-filter: blur(10px);
-    animation: slideDown 0.35s ease-out;
+  &__mobile-cta {
+    margin-top: 8px;
+    text-align: center;
+    background: linear-gradient(135deg, #6f66e8, #8d80ff);
+    color: #fff !important;
   }
 }
 
-.text--purple {
-  color: #9A93FF;
-}
-
-@media (min-width: 769px) {
+@media (min-width: 901px) {
   .header {
-    &__dropdown {
-      display: none;
+    &__desktop,
+    &__cta {
+      display: inline-flex;
     }
 
-    &__ul {
-      display: flex;
-      gap: 25px;
-      text-align: center;
-      overflow: hidden;
-      font-weight: 600;
-    }
-
-    &__button {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      background: #ADA7FF;
-      border-radius: 999px;
-      border: none;
-      width: 146px;
-      height: 55px;
-    }
-
-    &:after {
+    &__menu,
+    &__mobile {
       display: none;
     }
   }
 }
 
-@keyframes slideDown {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(0); }
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

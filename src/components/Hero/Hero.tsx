@@ -1,4 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import dogPrintIcon from '../../assets/icons/dog-print.svg';
+import playIcon from '../../assets/icons/play.svg';
+import rectangleIcon from '../../assets/icons/rectangle.svg';
+import rectangleFillIcon from '../../assets/icons/rectangle_with_fill.svg';
+import dogImage from '../../assets/images/dog-sitting.png';
+import catImage from '../../assets/images/cat-lying.png';
 import './Hero.scss';
 
 const stats = [
@@ -23,21 +29,24 @@ export const Hero: React.FC = () => {
     const animate = () => {
       if (started) return;
       started = true;
+
       stats.forEach((stat, idx) => {
         let current = 0;
         const step = Math.ceil(stat.value / 60);
+
         intervals[idx] = setInterval(() => {
           current += step;
           if (current >= stat.value) {
             current = stat.value;
             clearInterval(intervals[idx]);
           }
+
           setCounts(prev => {
-            const arr = [...prev];
-            arr[idx] = current;
-            return arr;
+            const updated = [...prev];
+            updated[idx] = current;
+            return updated;
           });
-        }, 20);
+        }, 18);
       });
     };
 
@@ -47,7 +56,7 @@ export const Hero: React.FC = () => {
           animate();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.45 }
     );
 
     if (statsRef.current) observer.observe(statsRef.current);
@@ -56,34 +65,44 @@ export const Hero: React.FC = () => {
       observer.disconnect();
       intervals.forEach(clearInterval);
     };
-    // eslint-disable-next-line
   }, []);
 
+  const heroAssets = {
+    '--hero-paw-icon': `url(${dogPrintIcon})`,
+    '--hero-dog-image': `url(${dogImage})`,
+    '--hero-cat-image': `url(${catImage})`,
+  } as React.CSSProperties;
+
   return (
-    <section className="content" id="home">
+    <section className="content" id="home" style={heroAssets}>
       <div className="content__text">
+        <p className="content__kicker">Pet Assistance Foundation</p>
         <h1>
           Looking for a <span className="text--purple">good</span> time?
         </h1>
         <p className="content__text--max-width">
-          We are dedicated to helping animals in need. Join us in making a difference in the lives of countless animals.
+          We rescue, heal, and rehome animals in crisis. Join the network of people creating a safe future for pets.
         </p>
 
         <div className="content__buttons">
-          <button className="button__adopt content__buttons--display">
-            Adopt Now <img src="./assets/icons/dog-print.svg" alt="" />
+          <a className="button__adopt content__buttons--display" href="#contact">
+            Adopt Now <img src={dogPrintIcon} alt="" />
+          </a>
+          <button className="button__play content__buttons--display" type="button">
+            <img src={playIcon} alt="" /> Watch Story
           </button>
-          <button className="button__play content__buttons--display text--purple">
-            <img src="./assets/icons/play.svg" alt="" /> Watch Video
-          </button>
+        </div>
+
+        <div className="content__tags">
+          <span>Trusted shelters</span>
+          <span>24/7 rescue line</span>
+          <span>Transparent donations</span>
         </div>
 
         <div className="content__statistics" ref={statsRef}>
           {stats.map((stat, idx) => (
             <div className="statistics__text--indent" key={stat.label}>
-              <p className="statistics__num">
-                {getDisplayValue(counts[idx], stat.suffix)}
-              </p>
+              <p className="statistics__num">{getDisplayValue(counts[idx], stat.suffix)}</p>
               <p className="statistics__text">{stat.label}</p>
             </div>
           ))}
@@ -92,16 +111,16 @@ export const Hero: React.FC = () => {
 
       <div className="content__img" aria-hidden="true">
         <div className="img__paw img__paw-top--position">
-          <img src="./assets/icons/rectangle.svg" className="img__paw-top--tranform" alt="" />
+          <img src={rectangleIcon} className="img__paw-top--tranform" alt="" />
         </div>
         <div className="img__dog img__dog--position">
-          <img src="./assets/icons/rectangle.svg" className="img__dog--tranform" alt="" />
+          <img src={rectangleIcon} className="img__dog--tranform" alt="" />
         </div>
         <div className="img__cat img__cat--position">
-          <img src="./assets/icons/rectangle.svg" alt="" />
+          <img src={rectangleIcon} alt="" />
         </div>
         <div className="img__paw img__paw--bottom img__paw-bottom--position">
-          <img src="./assets/icons/rectangle_with_fill.svg" className="img__paw-bottom--tranform" alt="" />
+          <img src={rectangleFillIcon} className="img__paw-bottom--tranform" alt="" />
         </div>
       </div>
     </section>

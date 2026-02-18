@@ -1,16 +1,32 @@
 import React from 'react';
+import cat1 from '../../assets/images/cat1.jpg';
+import cat2 from '../../assets/images/cat2.jpg';
+import dog1 from '../../assets/images/dog1.jpg';
+import dog2 from '../../assets/images/dog2.jpg';
+import monkey1 from '../../assets/images/monkey1.jpg';
+import monkey2 from '../../assets/images/monkey2.jpg';
 import './Gallery.scss';
+
+const galleryItems = [
+  { src: cat1, alt: 'Curious cat', className: 'portfolio__item1' },
+  { src: cat2, alt: 'Cat portrait', className: 'portfolio__item2' },
+  { src: dog2, alt: 'Friendly dog', className: 'portfolio__item3' },
+  { src: dog1, alt: 'Dog rescue', className: 'portfolio__item4' },
+  { src: monkey1, alt: 'Playful monkey', className: 'portfolio__item5' },
+  { src: monkey2, alt: 'Monkey close-up', className: 'portfolio__item6' },
+];
+
 export const Gallery: React.FC = () => {
   return (
     <section className="portfolio" id="gallery">
       <h3 className="text-centre-circle">Gallery</h3>
+      <h2>Stories from our rescue network</h2>
       <div className="portfolio__block">
-        <div className="portfolio__item1"><img src="./assets/images/cat1.jpg" alt="Portfolio 1" /></div>
-        <div className="portfolio__item2"><img src="./assets/images/cat2.jpg" alt="Portfolio 2" /></div>
-        <div className="portfolio__item3"><img src="./assets/images/dog2.jpg" alt="Portfolio 3" /></div>
-        <div className="portfolio__item4"><img src="./assets/images/dog1.jpg" alt="Portfolio 4" /></div>
-        <div className="portfolio__item5"><img src="./assets/images/monkey1.jpg" alt="Portfolio 5" /></div>
-        <div className="portfolio__item6"><img src="./assets/images/monkey2.jpg" alt="Portfolio 6" /></div>
+        {galleryItems.map(item => (
+          <figure className={item.className} key={item.alt}>
+            <img src={item.src} alt={item.alt} loading="lazy" />
+          </figure>
+        ))}
       </div>
     </section>
   );
