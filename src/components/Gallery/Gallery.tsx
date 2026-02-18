@@ -5,26 +5,23 @@ import dog1 from '../../assets/images/dog1.png';
 import dog2 from '../../assets/images/dog2.png';
 import monkey1 from '../../assets/images/monkey1.png';
 import monkey2 from '../../assets/images/monkey2.png';
+import { SECTION_IDS } from '../../constants/navigation';
+import { useI18n } from '../../i18n/I18nProvider';
 import './Gallery.scss';
 
-const galleryItems = [
-  { src: cat1, alt: 'Curious cat', className: 'portfolio__item1' },
-  { src: cat2, alt: 'Cat portrait', className: 'portfolio__item2' },
-  { src: dog2, alt: 'Friendly dog', className: 'portfolio__item3' },
-  { src: dog1, alt: 'Dog rescue', className: 'portfolio__item4' },
-  { src: monkey1, alt: 'Playful monkey', className: 'portfolio__item5' },
-  { src: monkey2, alt: 'Monkey close-up', className: 'portfolio__item6' },
-];
+const gallerySources = [cat1, cat2, dog2, dog1, monkey1, monkey2];
 
 export const Gallery: React.FC = () => {
+  const { messages } = useI18n();
+
   return (
-    <section className="portfolio" id="gallery">
-      <h3 className="text-centre-circle">Gallery</h3>
-      <h2>Stories from our rescue network</h2>
+    <section className="portfolio" id={SECTION_IDS.gallery}>
+      <h3 className="text-centre-circle">{messages.gallery.label}</h3>
+      <h2>{messages.gallery.title}</h2>
       <div className="portfolio__block">
-        {galleryItems.map(item => (
-          <figure className={item.className} key={item.alt}>
-            <img src={item.src} alt={item.alt} loading="lazy" />
+        {gallerySources.map((src, index) => (
+          <figure className={`portfolio__item${index + 1}`} key={src}>
+            <img src={src} alt={messages.gallery.itemsAlt[index]} loading="lazy" />
           </figure>
         ))}
       </div>

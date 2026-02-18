@@ -1,87 +1,57 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import logoIcon from '../../assets/icons/logo.svg';
 import menuIcon from '../../assets/icons/menu.svg';
+import { SECTION_HASH } from '../../constants/navigation';
+import { useHeaderNavigation } from '../../hooks/useHeaderNavigation';
+import { useI18n } from '../../i18n/I18nProvider';
 import './Header.scss';
 
-const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#contact', label: 'Contact' },
-];
+const navItems = [
+  { key: 'home', href: SECTION_HASH.home },
+  { key: 'about', href: SECTION_HASH.about },
+  { key: 'gallery', href: SECTION_HASH.gallery },
+  { key: 'contact', href: SECTION_HASH.contact },
+] as const;
 
 export const Header: React.FC = () => {
-  const [active, setActive] = useState('#home');
-  const [isSticky, setIsSticky] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      setIsSticky(window.scrollY > 24);
-      const scrollY = window.scrollY + 120;
-
-      let current = '#home';
-      navLinks.forEach(link => {
-        const section = document.querySelector(link.href) as HTMLElement | null;
-        if (section && scrollY >= section.offsetTop) {
-          current = link.href;
-        }
-      });
-
-      setActive(current);
-    };
-
-    const onResize = () => {
-      if (window.innerWidth > 900) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize);
-
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onResize);
-    };
-  }, []);
+  const { messages } = useI18n();
+  const { activeHash, isSticky, isMenuOpen, setIsMenuOpen } = useHeaderNavigation();
 
   return (
     <header className={`header${isSticky ? ' is-sticky' : ''}`}>
-      <a href="#home" className="header__brand" aria-label="Pet Care home">
-        <img src={logoIcon} alt="Pet Care" />
-        <span>PetCare</span>
+      <a href={SECTION_HASH.home} className="header__brand" aria-label={messages.header.homeAria}>
+        <img src={logoIcon} alt={messages.header.brand} />
+        <span>{messages.header.brand}</span>
       </a>
 
-      <nav className="header__desktop" aria-label="Main navigation">
-        {navLinks.map(link => (
-          <a key={link.href} href={link.href} className={active === link.href ? 'is-active' : ''}>
-            {link.label}
+      <nav className="header__desktop" aria-label={messages.header.mainNavAria}>
+        {navItems.map(link => (
+          <a key={link.key} href={link.href} className={activeHash === link.href ? 'is-active' : ''}>
+            {messages.header.nav[link.key]}
           </a>
         ))}
       </nav>
 
-      <a className="header__cta" href="#contact">Become a Helper</a>
+      <a className="header__cta" href={SECTION_HASH.contact}>{messages.header.cta}</a>
 
       <button
         className="header__menu"
         type="button"
-        aria-label="Toggle menu"
+        aria-label={messages.header.menuToggleAria}
         aria-expanded={isMenuOpen}
         onClick={() => setIsMenuOpen(prev => !prev)}
       >
         <img src={menuIcon} alt="" aria-hidden="true" />
       </button>
 
-      <nav className={`header__mobile${isMenuOpen ? ' is-open' : ''}`} aria-label="Mobile navigation">
-        {navLinks.map(link => (
-          <a key={link.href} href={link.href} className={active === link.href ? 'is-active' : ''} onClick={() => setIsMenuOpen(false)}>
-            {link.label}
+      <nav className={`header__mobile${isMenuOpen ? ' is-open' : ''}`} aria-label={messages.header.mobileNavAria}>
+        {navItems.map(link => (
+          <a key={link.key} href={link.href} className={activeHash === link.href ? 'is-active' : ''} onClick={() => setIsMenuOpen(false)}>
+            {messages.header.nav[link.key]}
           </a>
         ))}
-        <a href="#contact" className="header__mobile-cta" onClick={() => setIsMenuOpen(false)}>
-          Become a Helper
+        <a href={SECTION_HASH.contact} className="header__mobile-cta" onClick={() => setIsMenuOpen(false)}>
+          {messages.header.cta}
         </a>
       </nav>
     </header>

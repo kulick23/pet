@@ -1,35 +1,26 @@
 import React from 'react';
 import hamsterImage from '../../assets/images/hamster.png';
 import dogPrintIcon from '../../assets/icons/dog-print.svg';
+import { SECTION_IDS } from '../../constants/navigation';
+import { useI18n } from '../../i18n/I18nProvider';
 import './About.scss';
 
-const features = [
-  {
-    title: 'Charity Events',
-    description: 'Community events and educational talks that directly fund rescue operations.',
-  },
-  {
-    title: 'Fundraising Campaigns',
-    description: 'Transparent campaigns for food, treatment, transport, and shelter improvements.',
-  },
-];
-
 export const About: React.FC = () => {
+  const { messages } = useI18n();
+
   return (
-    <section id="about" className="about">
+    <section id={SECTION_IDS.about} className="about">
       <div className="about__image-wrap">
-        <img src={hamsterImage} alt="Hamster under care" className="about__photo" loading="lazy" />
+        <img src={hamsterImage} alt={messages.about.imageAlt} className="about__photo" loading="lazy" />
       </div>
 
       <div className="about__info">
-        <h3 className="text-with-circle">About Us</h3>
-        <h2>We are a modern animal assistance team</h2>
-        <p>
-          We combine field rescue, veterinary partnerships, and adoption programs to create measurable impact for animals in need.
-        </p>
+        <h3 className="text-with-circle">{messages.about.label}</h3>
+        <h2>{messages.about.title}</h2>
+        <p>{messages.about.description}</p>
 
         <div className="about__blocks">
-          {features.map(feature => (
+          {messages.about.features.map(feature => (
             <article className="about__block" key={feature.title}>
               <div className="about__icon">
                 <img src={dogPrintIcon} alt="" aria-hidden="true" />

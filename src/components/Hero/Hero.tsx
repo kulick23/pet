@@ -1,71 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import dogPrintIcon from '../../assets/icons/dog-print.svg';
 import playIcon from '../../assets/icons/play.svg';
 import rectangleIcon from '../../assets/icons/rectangle.svg';
 import rectangleFillIcon from '../../assets/icons/rectangle_with_fill.svg';
 import dogImage from '../../assets/images/dog-sitting.png';
 import catImage from '../../assets/images/cat-lying.png';
+import { HERO_STATS } from '../../constants/hero';
+import { SECTION_HASH, SECTION_IDS } from '../../constants/navigation';
+import { formatStatValue, useAnimatedStats } from '../../hooks/useAnimatedStats';
+import { useI18n } from '../../i18n/I18nProvider';
 import './Hero.scss';
 
-const stats = [
-  { value: 299_000, label: 'Animals Helped', suffix: 'K+' },
-  { value: 99_000, label: 'Volunteers', suffix: 'K+' },
-  { value: 2_000, label: 'Positive Reviews', suffix: 'K+' },
-];
-
-const getDisplayValue = (val: number, suffix: string) => {
-  if (suffix === 'K+') return `${Math.floor(val / 1000)}K+`;
-  return `${val}${suffix}`;
-};
-
 export const Hero: React.FC = () => {
-  const [counts, setCounts] = useState([0, 0, 0]);
+  const { messages } = useI18n();
   const statsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let intervals: NodeJS.Timeout[] = [];
-    let started = false;
-
-    const animate = () => {
-      if (started) return;
-      started = true;
-
-      stats.forEach((stat, idx) => {
-        let current = 0;
-        const step = Math.ceil(stat.value / 60);
-
-        intervals[idx] = setInterval(() => {
-          current += step;
-          if (current >= stat.value) {
-            current = stat.value;
-            clearInterval(intervals[idx]);
-          }
-
-          setCounts(prev => {
-            const updated = [...prev];
-            updated[idx] = current;
-            return updated;
-          });
-        }, 18);
-      });
-    };
-
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          animate();
-        }
-      },
-      { threshold: 0.45 }
-    );
-
-    if (statsRef.current) observer.observe(statsRef.current);
-
-    return () => {
-      observer.disconnect();
-      intervals.forEach(clearInterval);
-    };
-  }, []);
+  const counts = useAnimatedStats(
+    HERO_STATS.map(stat => stat.value),
+    statsRef
+  );
 
   const heroAssets = {
     '--hero-paw-icon': `url(${dogPrintIcon})`,
@@ -74,36 +27,34 @@ export const Hero: React.FC = () => {
   } as React.CSSProperties;
 
   return (
-    <section className="content" id="home" style={heroAssets}>
+    <section className="content" id={SECTION_IDS.home} style={heroAssets}>
       <div className="content__text">
-        <p className="content__kicker">Pet Assistance Foundation</p>
+        <p className="content__kicker">{messages.hero.kicker}</p>
         <h1>
-          Looking for a <span className="text--purple">good</span> time?
+          {messages.hero.titlePrefix} <span className="text--purple">{messages.hero.titleAccent}</span> {messages.hero.titleSuffix}
         </h1>
-        <p className="content__text--max-width">
-          We rescue, heal, and rehome animals in crisis. Join the network of people creating a safe future for pets.
-        </p>
+        <p className="content__text--max-width">{messages.hero.description}</p>
 
         <div className="content__buttons">
-          <a className="button__adopt content__buttons--display" href="#contact">
-            Adopt Now <img src={dogPrintIcon} alt="" />
+          <a className="button__adopt content__buttons--display" href={SECTION_HASH.contact}>
+            {messages.hero.adoptNow} <img src={dogPrintIcon} alt="" />
           </a>
-          <a className="button__play content__buttons--display" href="#gallery">
-            <img src={playIcon} alt="" /> Watch Story
+          <a className="button__play content__buttons--display" href={SECTION_HASH.gallery}>
+            <img src={playIcon} alt="" /> {messages.hero.watchStory}
           </a>
         </div>
 
         <div className="content__tags">
-          <span>Trusted shelters</span>
-          <span>24/7 rescue line</span>
-          <span>Transparent donations</span>
+          {messages.hero.tags.map(tag => (
+            <span key={tag}>{tag}</span>
+          ))}
         </div>
 
         <div className="content__statistics" ref={statsRef}>
-          {stats.map((stat, idx) => (
-            <div className="statistics__text--indent" key={stat.label}>
-              <p className="statistics__num">{getDisplayValue(counts[idx], stat.suffix)}</p>
-              <p className="statistics__text">{stat.label}</p>
+          {HERO_STATS.map((stat, idx) => (
+            <div className="statistics__text--indent" key={stat.key}>
+              <p className="statistics__num">{formatStatValue(counts[idx] ?? 0, stat.suffix)}</p>
+              <p className="statistics__text">{messages.hero.stats[stat.key]}</p>
             </div>
           ))}
         </div>
