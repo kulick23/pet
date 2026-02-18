@@ -131,23 +131,25 @@
   position: relative;
 }
 
-.img__paw::after {
-  content: '';
+.img__paw-icon {
   position: absolute;
-  top: 42%;
-  left: 42%;
-  transform: translate(-60%, -60%);
-  width: 20px;
-  height: 20px;
-  background-image: var(--hero-paw-icon);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+  top: 50%;
+  left: 50%;
+  width: 22px !important;
+  height: 22px !important;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  pointer-events: none;
 }
 
-.img__paw.img__paw--bottom::after {
-  top: 58%;
-  left: 58%;
+.img__paw-icon--top {
+  top: 40%;
+  left: 40%;
+}
+
+.img__paw-icon--bottom {
+  top: 60%;
+  left: 60%;
 }
 
 .img__dog::after {

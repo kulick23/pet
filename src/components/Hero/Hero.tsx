@@ -112,6 +112,7 @@ export const Hero: React.FC = () => {
       <div className="content__img" aria-hidden="true">
         <div className="img__paw img__paw-top--position">
           <img src={rectangleIcon} className="img__paw-top--tranform" alt="" />
+          <img src={dogPrintIcon} className="img__paw-icon img__paw-icon--top" alt="" />
         </div>
         <div className="img__dog img__dog--position">
           <img src={rectangleIcon} className="img__dog--tranform" alt="" />
@@ -121,6 +122,7 @@ export const Hero: React.FC = () => {
         </div>
         <div className="img__paw img__paw--bottom img__paw-bottom--position">
           <img src={rectangleFillIcon} className="img__paw-bottom--tranform" alt="" />
+          <img src={dogPrintIcon} className="img__paw-icon img__paw-icon--bottom" alt="" />
         </div>
       </div>
     </section>
