@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import dogPrintIcon from '../../assets/icons/dog-print.svg';
 import playIcon from '../../assets/icons/play.svg';
 import rectangleIcon from '../../assets/icons/rectangle.svg';
@@ -14,11 +14,9 @@ import './Hero.scss';
 export const Hero: React.FC = () => {
   const { messages } = useI18n();
   const statsRef = useRef<HTMLDivElement>(null);
+  const statValues = useMemo(() => HERO_STATS.map(stat => stat.value), []);
 
-  const counts = useAnimatedStats(
-    HERO_STATS.map(stat => stat.value),
-    statsRef
-  );
+  const counts = useAnimatedStats(statValues, statsRef);
 
   const heroAssets = {
     '--hero-paw-icon': `url(${dogPrintIcon})`,
