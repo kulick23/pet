@@ -1,10 +1,10 @@
 import React from 'react';
-import cat1 from '../../assets/images/cat1.jpg';
-import cat2 from '../../assets/images/cat2.jpg';
-import dog1 from '../../assets/images/dog1.jpg';
-import dog2 from '../../assets/images/dog2.jpg';
-import monkey1 from '../../assets/images/monkey1.jpg';
-import monkey2 from '../../assets/images/monkey2.jpg';
+import cat1 from '../../assets/images/cat1.png';
+import cat2 from '../../assets/images/cat2.png';
+import dog1 from '../../assets/images/dog1.png';
+import dog2 from '../../assets/images/dog2.png';
+import monkey1 from '../../assets/images/monkey1.png';
+import monkey2 from '../../assets/images/monkey2.png';
 import './Gallery.scss';
 
 const galleryItems = [
