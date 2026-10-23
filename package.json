@@ -1,13 +1,16 @@
 {
-  "name": "pet",
+  "name": "betera-green",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
+  "description": "Interactive portfolio concept for Betera environmental and social initiatives",
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=./",
     "preview": "vite preview",
-    "lint": "eslint -c .eslintrc src/*.js",
-    "lint:fix": "eslint -c .eslintrc src/*.js --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "eslint src --max-warnings=0",
+    "lint:fix": "eslint src --fix",
     "prettier": "prettier --check . --ignore-unknown --ignore-path ../../config/.prettierignore",
     "prettier:fix": "prettier --write . --ignore-unknown --ignore-path ../../config/.prettierignore"
   },
@@ -15,14 +18,21 @@
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "swiper": "^12.0.2"
+    "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.3",
+    "eslint": "^9.38.0",
+    "jsdom": "^26.1.0",
     "sass-embedded": "^1.92.1",
     "typescript": "^5.9.2",
-    "vite": "^7.1.5"
+    "typescript-eslint": "^8.46.2",
+    "vite": "^7.1.5",
+    "vitest": "^5.0.5"
   }
 }

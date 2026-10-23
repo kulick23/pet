@@ -1,97 +1,41 @@
-# PetCare
+# BETERA GREEN
 
-Modern landing page for an animal assistance foundation.
-Built with React + TypeScript + Vite, with responsive layout, animated hero stats, and a polished adoption-kit slider.
+Интерактивный portfolio concept экологической и социальной платформы Betera. Проект объединяет проверяемый индекс инициатив, страницу результатов с источниками, обучающую мини-игру Green Rush, демонстрационный каталог помощи животным и локальные недельные челленджи.
 
-## Live Concept
-The project presents a charity-style product page with sections for:
-- Hero and impact metrics
-- About the foundation
-- Rescue stories gallery
-- Adoption kit slider
-- Contact form
+Это независимый концепт и не официальный продукт Betera. Показатели снабжены источником, периодом и датой проверки; пользовательский прогресс хранится только в браузере.
 
-## Tech Stack
-- `React 19`
-- `TypeScript`
-- `Vite`
-- `SCSS`
-- `Swiper` (slider)
+## Стек
 
-## Key Features
-- Responsive layout for desktop and mobile
-- Animated counters in Hero section (custom hook + IntersectionObserver)
-- Reusable constants for breakpoints/timings/section anchors
-- i18n architecture with centralized text dictionary (currently English-only)
-- Refactored hooks for UI behavior and form state
-- Vercel-ready configuration (`vercel.json`)
+- React 19, TypeScript, React Router
+- Vite, SCSS
+- Vitest для state-machine игры
+- Playwright и design-taste inspector для browser/visual QA
 
-## Project Structure
-```text
-src/
-  assets/         # images/icons/items
-  components/     # UI sections (Header, Hero, About, Gallery, GiftSlider, Contact)
-  constants/      # magic numbers and shared config
-  hooks/          # reusable hooks (header nav, animated stats, contact form)
-  i18n/           # translation dictionary + provider
-  App.tsx
-  main.tsx
-styles/
-  style.scss      # global styles/design tokens
-public/
-  logo.svg
-vercel.json
-```
+## Запуск
 
-## Getting Started
-### 1) Install dependencies
 ```bash
 npm install
-```
-
-### 2) Run in development
-```bash
 npm run dev
 ```
 
-### 3) Build for production
+Проверки:
+
 ```bash
+npm run typecheck
+npm run lint
+npm run test
 npm run build
 ```
 
-### 4) Preview production build
-```bash
-npm run preview
-```
+## Маршруты
 
-## Scripts
-- `npm run dev` — start local dev server
-- `npm run build` — create production build in `dist/`
-- `npm run preview` — preview built app locally
-- `npm run lint` / `npm run lint:fix` — lint commands (if ESLint config is present)
-- `npm run prettier` / `npm run prettier:fix` — formatting checks/fixes
+- `/` — main experience
+- `/initiatives` и `/initiatives/:slug` — индекс и истории инициатив
+- `/impact` — результаты, карта и timeline
+- `/green-rush` — мини-игра с клавиатурным управлением
+- `/animals` — демонстрационный каталог помощи животным
+- `/petcare` — самостоятельная страница знакомства и помощи животным
+- `/challenges` — локальные недельные привычки
+- `/about` — методология, источники и credits изображений
 
-## Security
-Dependencies were checked and fixed with `npm audit fix`.
-Current audit status: `0 vulnerabilities`.
-
-## Deployment (Vercel)
-This repository includes `vercel.json` with:
-- Vite framework preset
-- build output set to `dist`
-- SPA rewrite to `index.html`
-
-Deploy options:
-1. Import repo into Vercel UI
-2. Or deploy with Vercel CLI
-
-## Notes
-- App text is centralized in `src/i18n/translations.ts`.
-- Locale switching UI was removed; currently only `en` is active.
-- Large PNG assets are intentionally kept as-is for design consistency.
-
-## Future Improvements
-- Add form backend integration (email/API endpoint)
-- Add image optimization pipeline (`webp/avif` + responsive sources)
-- Add tests (component + visual regression)
-- Re-enable multilingual support with route- or user-preference-based locale
+Исследование бренда, UX-аудит, дизайн-система и журнал реализации находятся в `BRAND_RESEARCH.md`, `AUDIT.md`, `DESIGN_SYSTEM.md` и `PROGRESS.md`.
