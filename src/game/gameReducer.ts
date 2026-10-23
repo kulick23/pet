@@ -5,7 +5,6 @@ export type GamePhase = 'intro' | 'tutorial' | 'playing' | 'paused' | 'result';
 export type Feedback = {
   correct: boolean;
   chosen: WasteCategory;
-  text: string;
 } | null;
 
 export type GameState = {
@@ -73,7 +72,6 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         feedback: {
           correct,
           chosen: action.category,
-          text: correct ? item.explanation : `Правильный ответ: ${item.explanation}`,
         },
       };
     }

@@ -210,6 +210,24 @@ p {
   transform: translateY(-2px);
 }
 
+.language-toggle {
+  min-width: 46px;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: var(--paper);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.language-toggle:hover {
+  border-color: var(--green);
+  color: var(--ink);
+  background: var(--green);
+}
+
 .menu-button {
   display: none;
   width: 48px;
@@ -1586,6 +1604,10 @@ figcaption {
   }
 
   .header-action {
+    margin-left: 0;
+  }
+
+  .language-toggle {
     margin-left: auto;
   }
 
@@ -1688,8 +1710,12 @@ figcaption {
   }
 
   .header-action {
-    padding: 9px 12px;
-    font-size: 14px;
+    display: none;
+  }
+
+  .language-toggle {
+    min-width: 42px;
+    height: 38px;
   }
 
   .menu-button {

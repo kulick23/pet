@@ -3,6 +3,7 @@ import forestImage from '../assets/editorial/landscape-polygon-panoramio.jpg';
 import recyclingImage from '../assets/editorial/recycling-bins-drammen.jpg';
 import plantingImage from '../assets/editorial/volunteer-tree-planting-120802-f-os776-021.jpg';
 import dogImage from '../assets/images/dog1.png';
+import type { Locale } from '../i18n/I18nProvider';
 
 export type InitiativeCategory = 'Лес' | 'Отходы' | 'Команда' | 'Животные';
 
@@ -152,3 +153,78 @@ export const timeline = [
   { year: 2023, title: 'Материал становится вещью', text: 'STAY.ECO показывает мерч из собранных в офисе материалов.' },
   { year: 2026, title: 'Green Week выходит в лес', text: '20 000 саженцев высажены в Могилёвской области; параллельно растут плоггинг и помощь животным.' },
 ];
+
+const englishBySlug: Record<string, Partial<Initiative>> = {
+  'green-week': {
+    title: 'Betera Green Week', category: 'Лес', summary: 'Restoring storm-damaged forest became a shared mission for the team, athletes and partners.',
+    description: ['Participants planted more than 20,000 spruce and pine seedlings in a part of the Mogilev region damaged by a severe storm.', 'The project combined practical forest restoration with everyday environmental habits. The platform presents the result as a documented event rather than a live counter.'],
+    result: '20,000+ trees', imageAlt: 'A volunteer planting a young tree', imageNote: 'Context photo of volunteer tree planting, not a Betera project photo.',
+    source: { title: 'Official Betera Green Week publication', url: initiatives[0].source.url, accessed: 'October 22, 2026' },
+  },
+  plogging: {
+    title: 'Plogging in Minsk', category: 'Команда', summary: 'A city cleanup combines movement, teamwork and a visible local result.',
+    description: ['During a summer plogging event in Grekova Park, participants collected 102 kg of litter.', 'ERA reports more than 600 kg collected across four plogging events. The platform separates the single-event result from the cumulative total.'],
+    result: '102 kg in one event', imageAlt: 'Volunteers removing large litter near water', imageNote: 'Context photo of a cleanup, not a Betera project photo.',
+  },
+  'green-office': {
+    title: 'Green Office', category: 'Отходы', summary: 'Environmental practice starts inside the office, with separate routes for batteries, bottle caps and waste paper.',
+    description: ['In 2018, branded bottle-cap containers appeared in Minsk shopping centres alongside an office battery container.', 'Since late 2022, the company has also sent waste paper for recycling. These processes inspired the interactive language of BETERA GREEN: every material needs to find its route.'],
+    result: 'Systematic collection since 2018', imageAlt: 'A row of municipal recycling bins', imageNote: 'Context photo of recycling infrastructure, not a Betera facility.',
+  },
+  'eco-merch': {
+    title: 'STAY.ECO', category: 'Отходы', summary: 'Materials collected in the office return to use as new objects.',
+    description: ['The bag described by the company was made entirely from materials collected in the office: plastic bags and part of an old lanyard.', 'The project goes beyond decorative green merchandise: the material and its origin become part of the product.'],
+    result: '100% collected materials', imageAlt: 'Infrastructure for separated material collection', imageNote: 'Context photo of recycling, not a Betera merchandise photo.',
+    source: { title: 'How to make sustainable merchandise: the Betera case', url: initiatives[3].source.url, accessed: 'October 22, 2026' },
+  },
+  'animal-aid': {
+    title: 'Animal support', category: 'Животные', summary: 'Support for animal welfare organisations includes food donations and educational projects.',
+    description: ['According to ERA, Betera has donated around 7 tonnes of food to volunteers and animal welfare groups over the lifetime of its initiatives.', 'In 2026, Beteratruck delivered 1.5 tonnes of food to organisations across Belarus, while another charity project provided 638 kg to ZOOchance.'],
+    result: 'Around 7 tonnes of food', imageAlt: 'A dog outdoors', imageNote: 'Illustrative photo from the original PetCare project, not an animal from a named organisation.',
+  },
+  'forest-context': {
+    title: 'The forest returns', category: 'Лес', summary: 'Planting is only the beginning; the real result is how the land recovers over time.',
+    description: ['BETERA GREEN connects the published Green Week result with the forest’s long life cycle. The platform does not model an unverified survival count for the seedlings.', 'Instead of a forecast, visitors see the planting date, location and original public result.'],
+    result: 'Mogilev region', imageAlt: 'Mixed forest on an autumn day', imageNote: 'Open-collection forest landscape, not the Green Week location.',
+  },
+};
+
+const categoryEnglish: Record<InitiativeCategory, InitiativeCategory> = {
+  'Лес': 'Лес', 'Отходы': 'Отходы', 'Команда': 'Команда', 'Животные': 'Животные',
+};
+
+export const categoryLabels: Record<Locale, Record<InitiativeCategory, string>> = {
+  ru: { 'Лес': 'Лес', 'Отходы': 'Отходы', 'Команда': 'Команда', 'Животные': 'Животные' },
+  en: { 'Лес': 'Forest', 'Отходы': 'Waste', 'Команда': 'Team', 'Животные': 'Animals' },
+};
+
+export function getEraSource(locale: Locale): Source {
+  return locale === 'ru' ? eraSource : { ...eraSource, title: 'ERA — Betera corporate social responsibility', accessed: 'October 22, 2026' };
+}
+
+export function getInitiatives(locale: Locale): Initiative[] {
+  if (locale === 'ru') return initiatives;
+  const source = getEraSource(locale);
+  return initiatives.map(item => ({ ...item, ...englishBySlug[item.slug], category: categoryEnglish[item.category], source: englishBySlug[item.slug]?.source ?? source }));
+}
+
+export function getImpactMetrics(locale: Locale) {
+  if (locale === 'ru') return impactMetrics;
+  const source = getEraSource(locale);
+  return [
+    { value: '20,000+', label: 'trees planted across the country', period: 'Cumulative total published in 2026', source },
+    { value: '≈7,000 kg', label: 'of food donated to volunteers and animal welfare groups', period: 'Cumulative total published in 2026', source },
+    { value: '600+ kg', label: 'of litter collected across 4 plogging events', period: 'Cumulative total published in 2026', source },
+    { value: '18%+', label: 'of employees regularly join volunteer projects', period: 'Figure published in 2026', source },
+  ];
+}
+
+export function getTimeline(locale: Locale) {
+  if (locale === 'ru') return timeline;
+  return [
+    { year: 2018, title: 'Separated collection enters the office', text: 'Containers for bottle caps and batteries establish a systematic practice.' },
+    { year: 2022, title: 'Waste paper goes to recycling', text: 'The company reports regular recycling of office paper from the end of the year.' },
+    { year: 2023, title: 'Material becomes an object', text: 'STAY.ECO presents merchandise made from materials collected in the office.' },
+    { year: 2026, title: 'Green Week reaches the forest', text: '20,000 seedlings are planted in the Mogilev region as plogging and animal support continue to grow.' },
+  ];
+}
